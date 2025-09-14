@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+		 					 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+						
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>chickgirl-bussiness</artifactId>
+	<packaging>jar</packaging>
+  
+	<parent>
+		<groupId>com.drr.ucompensar</groupId>
+		<artifactId>chickgirl</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../chickgirl</relativePath>
+	</parent>
+
+	<properties>
+		<!--   INYECCION DE DEPENDENCIAS   -->
+		<jakarta.cdi.api.version>4.1.0</jakarta.cdi.api.version>
+		<gson.version>2.11.0</gson.version>
+		<jbcryp.version>0.4</jbcryp.version>
+		<!--    UTILIDADES    -->
+		<lombok.version>1.18.36</lombok.version>
+		<lang3.version>3.17.0</lang3.version>
+		<commons.validator.version>1.9.0</commons.validator.version>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.drr.ucompensar</groupId>
+			<artifactId>chickgirl-repository</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.enterprise</groupId>
+			<artifactId>jakarta.enterprise.cdi-api</artifactId>
+			<version>${jakarta.cdi.api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>${gson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mindrot</groupId>
+			<artifactId>jbcrypt</artifactId>
+			<version>${jbcryp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${lang3.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-validator</groupId>
+			<artifactId>commons-validator</artifactId>
+			<version>${commons.validator.version}</version>
+		</dependency>
+	</dependencies>
+	
+</project>
