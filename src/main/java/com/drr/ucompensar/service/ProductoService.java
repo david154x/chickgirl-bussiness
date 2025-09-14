@@ -9,5 +9,9 @@ public interface ProductoService {
 	Boolean crearProducto(ProductoDTO productoDTO);
 	
 	Boolean crearProductos(List<ProductoDTO> lstProductoDTO);
+	
+	List<ProductoDTO> consultarTodos();
+	
+	ProductoDTO consultarXId(Long idProducto);
 
 }

@@ -1,5 +1,7 @@
 package com.drr.ucompensar.service.impl;
 
+import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -66,6 +68,61 @@ public class ProductoServiceImpl implements ProductoService {
 			e.printStackTrace();
 		}
 		return Boolean.FALSE;
+	}
+
+	@Override
+	public List<ProductoDTO> consultarTodos() {
+		try {
+			
+			List<ProductoEntity> lstProductoEntity = this.productoRepository.findAll();
+			
+			List<ProductoDTO> lstProductosEncontrados = new ArrayList<>();
+			
+			if ( lstProductoEntity != null && !lstProductoEntity.isEmpty() ) {
+				
+				lstProductoEntity.stream().forEach(x -> {
+					
+					lstProductosEncontrados.add(ProductoDTO.builder()
+							.codigoProducto(x.getId())
+							.nombreProducto(x.getNombre())
+							.categoria(x.getCategoria())
+							.precio(x.getPrecio().setScale(0, RoundingMode.HALF_UP))
+							.build());
+					
+				});
+				
+			}
+			
+			if ( lstProductosEncontrados != null && !lstProductosEncontrados.isEmpty() )
+				return lstProductosEncontrados;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public ProductoDTO consultarXId(Long idProducto) {
+		try {
+			
+			ProductoEntity productoEncontrado = this.productoRepository.findById(idProducto);
+			
+			if ( productoEncontrado != null && !Objects.isNull(productoEncontrado) ) {
+				
+				return ProductoDTO.builder()
+						.codigoProducto(productoEncontrado.getId())
+						.nombreProducto(productoEncontrado.getNombre())
+						.categoria(productoEncontrado.getCategoria())
+						.precio(productoEncontrado.getPrecio().setScale(0, RoundingMode.HALF_UP))
+						.build();
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

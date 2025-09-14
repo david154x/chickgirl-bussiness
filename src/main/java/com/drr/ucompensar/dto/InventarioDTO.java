@@ -1,7 +1,5 @@
 package com.drr.ucompensar.dto;
 
-import java.math.BigDecimal;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,14 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductoDTO {
+public class InventarioDTO {
 	
-	private Long codigoProducto;
+	private Integer cantidad;
 	
-	private String nombreProducto;
-	
-	private String categoria;
-	
-	private BigDecimal precio;
+	private ProductoDTO productoDTO;
 
 }
